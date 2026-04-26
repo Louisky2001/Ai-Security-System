@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Security Platform</title>
+</head>
+<body>
+
+  <h1>Secure Prompt Input</h1>
+
+  <textarea id="prompt" rows="5" cols="70"></textarea>
+  <br><br>
+
+  <button onclick="sendPrompt()">Send Secure Prompt</button>
+
+  <h3>Response:</h3>
+  <pre id="result" style="background:#111; color:#00ff66; padding:15px; min-height:80px;"></pre>
+
+  <script>
+    function maskPII(text) {
+      if (!text) return text;
+
+      text = text.replace(/\S+@\S+/g, "[EMAIL]");
+      text = text.replace(/\+?\d{10,15}/g, "[PHONE]");
+
+      text = text.replace(
+        /\b(\d{1,2}(st|nd|rd|th)?\s(January|February|March|April|May|June|July|August|September|October|November|December)\s\d{4}|\d{1,2}[/-]\d{1,2}[/-]\d{2,4}|\d{4}-\d{1,2}-\d{1,2}|(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s\d{1,2},\s\d{4})\b/gi,
+        "[DOB]"
+      );
+
+      return text;
+    }
+
+    async function sendPrompt() {
+      const resultBox = document.getElementById("result");
+      resultBox.textContent = "Sending request...";
+
+      const rawPrompt = document.getElementById("prompt").value;
+      const cleanPrompt = maskPII(rawPrompt);
+
+      try {
+        const response = await fetch("http://localhost:8000/query", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            user: "attacker",
+            token: "anyvalue",
+            prompt: cleanPrompt
+          })
+        });
+
+        const data = await response.json();
+        resultBox.textContent = JSON.stringify(data, null, 2);
+
+      } catch (error) {
+        resultBox.textContent = "ERROR: " + error.message;
+      }
+    }
+  </script>
+
+</body>
+</html>
