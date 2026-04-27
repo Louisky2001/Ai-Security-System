@@ -27,26 +27,25 @@ This project implements a **defense-in-depth AI security system** designed to pr
 It combines **frontend and backend protections** to ensure sensitive data is sanitized before and after transmission, while continuously analyzing user behavior for real-time threat detection.
 
 ---
-
 ## 📸 Screenshots
 
 ### 🔹 Secure Frontend Input (PII Masking)
-![Frontend UI](screenshots/frontend-ui.png)
+![Frontend UI](ai_security_platform/screenshots/frontend-ui.png)
 
 ---
 
 ### 🔹 API Response with Sanitized Data
-![API Response](screenshots/api-response.png)
+![API Response](ai_security_platform/screenshots/api-response.png)
 
 ---
 
 ### 🔹 Behavioral Threat Detection Output
-![Threat Detection](screenshots/threat-detection.png)
+![Threat Detection](ai_security_platform/screenshots/threat-detection.png)
 
 ---
 
 ### 🔹 Blocked Malicious Request (403)
-![Blocked Request](screenshots/blocked-request.png)
+![Blocked Request](ai_security_platform/screenshots/blocked-request.png)
 
 ---
 
