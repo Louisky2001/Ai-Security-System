@@ -160,3 +160,18 @@
 2026-04-26 22:09:14,024 - ALLOWED | user=attacker | ip=127.0.0.1 | endpoint=/query | score=20
 2026-04-26 22:11:17,141 - BLOCKED | user=attacker | ip=192.168.1.55 | threat_level=critical | score=95
 2026-04-26 22:11:39,877 - ALLOWED | user=attacker | ip=127.0.0.1 | endpoint=/query | score=20
+2026-04-27 00:02:08,821 - ALLOWED | user=attacker | ip=192.168.1.50 | endpoint=/login | score=20
+2026-04-27 00:02:58,423 - ALLOWED | user=attacker | ip=192.168.1.50 | endpoint=/login | score=20
+2026-04-27 00:02:59,195 - ALLOWED | user=attacker | ip=192.168.1.50 | endpoint=/login | score=50
+2026-04-27 00:02:59,861 - ALLOWED | user=attacker | ip=192.168.1.50 | endpoint=/login | score=50
+2026-04-27 00:03:00,446 - BLOCKED | user=attacker | ip=192.168.1.50 | threat_level=critical | score=110
+2026-04-27 00:03:01,087 - Rate limit exceeded by attacker
+2026-04-27 00:03:02,006 - Rate limit exceeded by attacker
+2026-04-27 00:03:02,832 - Rate limit exceeded by attacker
+2026-04-27 00:03:03,698 - Rate limit exceeded by attacker
+2026-04-27 00:04:56,676 - BLOCKED | user=attacker | ip=192.168.1.50 | threat_level=critical | score=310
+2026-04-27 00:04:58,621 - BLOCKED | user=attacker | ip=192.168.1.50 | threat_level=critical | score=310
+2026-04-27 00:04:59,992 - BLOCKED | user=attacker | ip=192.168.1.50 | threat_level=critical | score=310
+2026-04-27 00:05:01,599 - BLOCKED | user=attacker | ip=192.168.1.50 | threat_level=critical | score=310
+2026-04-27 00:05:02,766 - BLOCKED | user=attacker | ip=192.168.1.50 | threat_level=critical | score=310
+2026-04-27 00:22:19,335 - BLOCKED | user=insider_user | ip=192.168.1.88 | threat_level=critical | score=95
