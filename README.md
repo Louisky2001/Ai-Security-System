@@ -222,28 +222,22 @@ Repeat 5 times → triggers:
 
 
 ---
-## 📊 Measurable Impact
+## 🚀 Security & Business Impact
 
-- Blocked 100% of simulated brute-force login attempts after threshold detection  
-- Eliminated raw PII exposure through dual-layer sanitization (frontend + backend)  
-- Reduced risk of prompt injection attacks via input validation and filtering  
-- Implemented behavioral scoring system capable of identifying high-risk actions in real time  
+This system simulates a real-world Security Operations Center (SOC) defense pipeline, delivering measurable security outcomes:
 
----
-## 🚀 Project Impact
-
-This system simulates a real-world Security Operations Center (SOC) defense pipeline, capable of:
-
-- Detecting and blocking brute-force login attempts in real time  
-- Preventing sensitive data leakage through dual-layer PII sanitization  
-- Identifying insider threats based on behavioral anomalies  
-- Enforcing zero-trust access control using dynamic risk scoring  
+- Blocked **100% of simulated brute-force login attempts** after threshold-based detection  
+- Prevented **sensitive data leakage** using dual-layer PII sanitization (frontend + backend)  
+- Reduced risk of **prompt injection attacks** through input validation and filtering  
+- Implemented **real-time behavioral threat scoring** to identify high-risk user actions  
+- Detected and mitigated **insider threat scenarios** based on behavioral anomalies  
+- Enforced **zero-trust access control** using dynamic risk scoring and automated response  
 
 This project demonstrates practical experience in:
 - Detection Engineering  
 - Security Automation  
 - Threat Modeling  
-- API Security
+- API Security  
 ---
 
 ## 💼 Why This Project Matters to Employers
