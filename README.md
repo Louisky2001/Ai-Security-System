@@ -29,22 +29,22 @@ It combines **frontend and backend protections** to ensure sensitive data is san
 ---
 ## 📸 Screenshots
 
-### 🔹 Secure Frontend Input (PII Masking)
+### 🔹 **Secure Frontend Input (PII Masking)**
 ![Frontend UI](ai_security_platform/screenshots/frontend-ui.png)
 
 ---
 
-### 🔹 API Response with Sanitized Data
+### 🔹 **API Response with Sanitized Data**
 ![API Response](ai_security_platform/screenshots/api-response.png)
 
 ---
 
-### 🔹 Behavioral Threat Detection Output
+### 🔹 **Behavioral Threat Detection Output**
 ![Threat Detection](ai_security_platform/screenshots/threat-detection.png)
 
 ---
 
-### 🔹 Blocked Malicious Request (403)
+### 🔹 **Blocked Malicious Request (403)**
 ![Blocked Request](ai_security_platform/screenshots/blocked-request.png)
 
 ---
