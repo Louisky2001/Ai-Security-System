@@ -145,3 +145,81 @@ Low → Medium → High → Critical
 ---
 
 ## 🔄 System Workflow
+Client Input
+↓
+Frontend PII Masking
+↓
+Backend Validation
+↓
+Authentication Check
+↓
+Rate Limiting
+↓
+Phishing Detection (if email_scan)
+↓
+Behavioral Threat Detection
+↓
+Prompt Injection Detection
+↓
+Secure Logging
+↓
+Response / Block
+
+---
+
+---
+
+## 🚨 Example Detection Scenarios
+
+| Scenario | Outcome |
+|--------|--------|
+| Multiple failed logins | Flagged |
+| Failed + successful login | High risk |
+| Phishing email with malicious link | Blocked |
+| Spoofed sender email | Flagged |
+| Sensitive endpoint + export | Blocked |
+
+---
+
+## 🛠️ Tech Stack
+
+- **Backend:** FastAPI (Python)  
+- **Frontend:** HTML + JavaScript  
+- **Security Modules:**
+  - PII detection (Regex)  
+  - Behavioral analytics engine  
+  - Rate limiting system  
+  - Injection detection logic  
+  - Phishing detection engine  
+  - Threat intelligence integration (VirusTotal)  
+
+---
+
+## 📂 Project Structure
+ai_security_platform/
+│
+├── main.py
+├── index.html
+├── screenshots/
+│
+├── security/
+│ ├── auth.py
+│ ├── injection.py
+│ ├── pii.py
+│ ├── rate_limit.py
+│ ├── logger.py
+│ ├── behavioral_threat.py
+│ ├── phishing_detector.py
+│ └── threat_intel.py
+│
+└── requirements.txt
+
+---
+
+## 🚀 How to Run
+
+```bash
+pip install -r requirements.txt
+python -m uvicorn ai_security_platform.main:app --reload
+
+OPEN: http://127.0.0.1:8000/docs
