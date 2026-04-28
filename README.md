@@ -1,10 +1,13 @@
-# 🔐 🚀 A production-style AI security middleware that simulates real SOC detection, prevention, and response workflows.
+# 🔐 🚀 AI Security Middleware with Behavioral Threat Detection & Phishing Defense
+
+🚨 A production-style AI security system that simulates how a **Security Operations Center (SOC)** detects, analyzes, and blocks cyber threats in real time.
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)
 ![FastAPI](https://img.shields.io/badge/FastAPI-Framework-009688?logo=fastapi)
 ![Cybersecurity](https://img.shields.io/badge/Cybersecurity-Defense--in--Depth-red)
 ![Status](https://img.shields.io/badge/Project-Production--Ready-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
+![SOC Ready](https://img.shields.io/badge/SOC-Ready-blue)
 
 ---
 
@@ -13,42 +16,53 @@
 Cybersecurity Analyst | SOC | AI Security | Detection Engineering  
 
 ---
-![SOC Ready](https://img.shields.io/badge/SOC-Ready-blue)
-
----
 
 ## 📌 Overview
 
-This project implements a **defense-in-depth AI security system** designed to protect applications from modern threats such as:
+This project implements a **defense-in-depth AI security system** designed to protect modern applications from evolving cyber threats.
+
+It integrates multiple security layers to detect and respond to:
 
 - Prompt injection attacks  
 - Sensitive data (PII) exposure  
 - Behavioral anomalies  
 - Brute-force login attempts  
 - Insider threats  
+- **Phishing email attacks (header + content analysis + threat intelligence)**  
 
-It combines **frontend and backend protections** to ensure sensitive data is sanitized before and after transmission, while continuously analyzing user behavior for real-time threat detection.
+The system combines **frontend + backend protections**, behavioral analytics, and automated response mechanisms to enforce a **zero-trust security model**.
 
 ---
+
 ## 📸 Screenshots
 
-### 🔹 **Secure Frontend Input (PII Masking)**
+### 🔹 Secure Frontend Input (PII Masking)
 ![Frontend UI](ai_security_platform/screenshots/frontend-ui.png)
 
 ---
 
-### 🔹 **API Response with Sanitized Data**
+### 🔹 API Response with Sanitized Data
 ![API Response](ai_security_platform/screenshots/api-response.png)
 
 ---
 
-### 🔹 **Behavioral Threat Detection Output**
+### 🔹 Behavioral Threat Detection Output
 ![Threat Detection](ai_security_platform/screenshots/threat-detection.png)
 
 ---
 
-### 🔹 **Blocked Malicious Request (403)**
+### 🔹 Blocked Malicious Request (403)
 ![Blocked Request](ai_security_platform/screenshots/blocked-request.png)
+
+---
+
+### 🔹 Phishing Email Detection (Blocked)
+![Phishing Blocked](ai_security_platform/screenshots/phishing-blocked-email.png)
+
+---
+
+### 🔹 VirusTotal Threat Intelligence
+![Threat Intel](ai_security_platform/screenshots/virustotal-threat-intel.png)
 
 ---
 
@@ -61,11 +75,41 @@ It combines **frontend and backend protections** to ensure sensitive data is san
 - Prompt injection detection  
 - PII sanitization (client + server)  
 - Behavioral threat scoring  
+- **Phishing email detection (header + content analysis)**  
+- **VirusTotal threat intelligence integration**  
 - Secure logging  
 
 ---
 
-### 🧾 PII Protection (Defense-in-Depth)
+## 📧 Phishing Email Detection & Response
+
+This module simulates how modern SOC teams detect phishing threats using **multi-layer analysis**.
+
+### 🧠 Header Analysis
+- SPF, DKIM, DMARC validation  
+- Sender spoofing detection (From vs Return-Path mismatch)  
+- Reply-To manipulation detection  
+- Suspicious mail routing (Received headers)  
+
+### 📩 Content Analysis
+- Social engineering keyword detection  
+- Credential harvesting indicators  
+- Suspicious URL extraction  
+
+### 🌍 Threat Intelligence Integration
+- URLs are analyzed using **VirusTotal API**  
+- Detects:
+  - Malicious links  
+  - Suspicious domains  
+  - Known threat indicators  
+
+### 🚫 Automated Response
+- High-risk emails are automatically blocked (HTTP 403)  
+- Security events are logged for further investigation  
+
+---
+
+## 🧾 PII Protection (Defense-in-Depth)
 
 | Layer | Description |
 |------|------------|
@@ -79,222 +123,25 @@ It combines **frontend and backend protections** to ensure sensitive data is san
 - Date of Birth → `[DOB]`  
 
 ---
-### 🧠 Behavioral Threat Detection
+
+## 🧠 Behavioral Threat Detection
 
 The system evaluates user activity using:
 
 - Failed login patterns  
-- IP address anomalies  
+- IP anomalies  
 - After-hours access  
 - Sensitive endpoint usage  
-- High-risk actions (e.g., data export, privilege escalation)  
+- High-risk actions (e.g. data export, privilege escalation)  
 
-#### 🚨 Threat Levels
-- Low  
-- Medium  
-- High  
-- Critical  
+### 🚨 Threat Levels
+Low → Medium → High → Critical  
 
-#### 🔒 Automated Actions
+### 🔒 Automated Actions
 - Account lockout  
 - IP blacklisting  
 - Request blocking (403)  
 
 ---
 
-## 🚨 Example Detection Scenarios
-
-| Scenario | Outcome |
-|--------|--------|
-| Multiple failed logins | Flagged |
-| Failed + successful login | High risk |
-| Sensitive endpoint + export | Blocked |
-| Repeated attacks | IP blacklisted |
-
----
-
-## 🏗️ Architecture
-Client Input
-↓
-Frontend PII Masking (JavaScript)
-↓
-FastAPI Backend
-↓
-PII Sanitization (Python)
-↓
-Authentication Check
-↓
-Rate Limiting
-↓
-Behavioral Threat Detection
-↓
-Prompt Injection Detection
-↓
-Secure Logging
-↓
-Response
-
-
----
-
-## 🛠️ Tech Stack
-
-- **Backend:** FastAPI (Python)  
-- **Frontend:** HTML + JavaScript  
-- **Security Modules:**
-  - Regex-based PII detection  
-  - Behavioral analytics engine  
-  - Rate limiting system  
-  - Injection detection logic  
-
----
-## 📂 Project Structure
-ai_security_platform/
-│
-├── main.py
-├── index.html
-├── screenshots/
-│
-├── security/
-│ ├── auth.py
-│ ├── injection.py
-│ ├── pii.py
-│ ├── rate_limit.py
-│ ├── logger.py
-│ ├── behavioral_threat.py
-│
-└── requirements.txt
-
-
----
-## 🚀 How to Run
-
-### 1. Install dependencies
-pip install -r requirements.txt
-
----
-### 2. Run FastAPI server
-uvicorn main:app --reload
----
-
-### 3. Open API Docs
-http://127.0.0.1:8000/docs
----
-
-### 4. Run Frontend
-
-Open: index.html (from project folder/ local Disk C)
-
-
----
-
-## 🧪 Testing
-
-### 🔴 Failed Login Simulation
-{
-"user": "attacker",
-"token": "anyvalue",
-"prompt": "Testing failed login",
-"ip": "192.168.1.50",
-"action": "login",
-"status": "failed",
-"endpoint": "/login"
-}
-
-
-Repeat 5 times → triggers:
-- Account lockout  
-- IP blacklist  
-- Request blocking  
-
----
-
-### 🔴 High-Risk Behavior
-{
-"user": "insider_user",
-"token": "anyvalue",
-"prompt": "Export all user records",
-"ip": "192.168.1.88",
-"action": "data_export",
-"status": "success",
-"endpoint": "/api/export"
-}
-
-
----
-## 🚀 Security & Business Impact
-
-This system simulates a real-world Security Operations Center (SOC) defense pipeline, delivering measurable security outcomes:
-
-- Blocked **100% of simulated brute-force login attempts** after threshold-based detection  
-- Prevented **sensitive data leakage** using dual-layer PII sanitization (frontend + backend)  
-- Reduced risk of **prompt injection attacks** through input validation and filtering  
-- Implemented **real-time behavioral threat scoring** to identify high-risk user actions  
-- Detected and mitigated **insider threat scenarios** based on behavioral anomalies  
-- Enforced **zero-trust access control** using dynamic risk scoring and automated response  
-
-This project demonstrates practical experience in:
-- Detection Engineering  
-- Security Automation  
-- Threat Modeling  
-- API Security  
----
-
-## 💼 Why This Project Matters to Employers
-
-This project reflects hands-on experience with real-world security challenges, including:
-
-- Investigating suspicious user behavior across multiple signals  
-- Designing automated threat detection pipelines  
-- Implementing layered security controls in API environments  
-- Building security systems aligned with SOC workflows  
-
-It bridges the gap between theoretical cybersecurity knowledge and practical implementation.
-
----
-
-## 🔒 Security Design Principles
-
-- Defense-in-depth  
-- Least privilege access  
-- Input validation & sanitization  
-- Behavioral analytics  
-- Zero trust mindset  
-
----
-
-## 🎯 Why This Project Matters
-
-Modern AI systems are vulnerable to prompt injection, data leakage, and behavioral attacks.  
-This project demonstrates how traditional cybersecurity principles can be combined with AI-aware controls to secure intelligent systems.
-
----
-
-## 📈 Future Improvements
-
-- Geo-IP anomaly detection  
-- Machine learning-based threat scoring  
-- Real-time dashboard (SIEM-style)  
-- Database-backed logging (ELK/Splunk integration)   
-
----
-## 🎥 Live Demo (Optional)
-
-You can test the system via:
-- FastAPI Docs: http://127.0.0.1:8000/docs  
-- Frontend UI: index.html  
----
-
-
-## 📬 Contact
-
-- GitHub: https://github.com/louisky2001  
-- LinkedIn: *(Add your LinkedIn link here)*  
-
----
-
-## ⭐ Final Note
-
-This project showcases how modern systems can integrate **AI-aware security controls with traditional cybersecurity practices** to protect applications against evolving threats.
-
-
+## 🔄 System Workflow
