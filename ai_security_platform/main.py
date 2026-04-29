@@ -4,12 +4,13 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-import security.auth as auth
-import security.injection as injection
-import security.pii as pii
-import security.rate_limit as rate_limit
-import security.logger as logger
-import security.behavioral_threat as behavioral_threat
+from ai_security_platform.security import auth
+from ai_security_platform.security import injection
+from ai_security_platform.security import pii
+from ai_security_platform.security import rate_limit
+from ai_security_platform.security import logger
+from ai_security_platform.security import behavioral_threat
+from ai_security_platform.security import phishing_detector
 
 
 app = FastAPI()
@@ -32,6 +33,10 @@ class QueryRequest(BaseModel):
     status: str = "success"
     endpoint: str = "/query"
 
+    email_subject: str = ""
+    email_body: str = ""
+    email_headers: str = ""
+
 
 @app.get("/")
 def home():
@@ -44,20 +49,37 @@ def secure_query(data: QueryRequest):
     user = data.user
     token = data.token
 
-    # 1. Mask PII immediately
     clean_prompt = pii.mask_pii(data.prompt)
 
-    # 2. Authentication check
     if not auth.verify_token(token):
         logger.log_event(f"Unauthorized access attempt by {user}")
         raise HTTPException(status_code=401, detail="Invalid token")
 
-    # 3. Rate limiting check
     if not rate_limit.check_rate_limit(user):
         logger.log_event(f"Rate limit exceeded by {user}")
         raise HTTPException(status_code=429, detail="Too many requests")
 
-    # 4. Behavioral threat detection
+    phishing_result = None
+
+    if data.action == "email_scan":
+        phishing_result = phishing_detector.analyze_phishing_email(
+            subject=data.email_subject,
+            body=data.email_body,
+            raw_headers=data.email_headers
+        )
+
+        if phishing_detector.should_block_email(phishing_result):
+            logger.log_event(f"Phishing email blocked for user: {user}")
+
+            raise HTTPException(
+                status_code=403,
+                detail={
+                    "status": "blocked",
+                    "message": "Email blocked due to phishing indicators",
+                    "phishing_analysis": phishing_result
+                }
+            )
+
     event = {
         "user": user,
         "ip": data.ip,
@@ -82,17 +104,16 @@ def secure_query(data: QueryRequest):
             }
         )
 
-    # 5. Prompt injection detection
     if injection.detect_prompt_injection(clean_prompt):
         logger.log_event(f"Prompt injection attempt blocked for user: {user}")
 
         return {
             "status": "blocked",
             "reason": "Prompt injection detected",
-            "threat_analysis": threat_result
+            "threat_analysis": threat_result,
+            "phishing_analysis": phishing_result
         }
 
-    # 6. Safe logging only
     logger.log_event(
         f"ALLOWED | user={user} | ip={data.ip} | endpoint={data.endpoint} | score={threat_result['threat_score']}"
     )
@@ -100,5 +121,6 @@ def secure_query(data: QueryRequest):
     return {
         "status": "success",
         "response": f"Processed: {clean_prompt}",
-        "threat_analysis": threat_result
+        "threat_analysis": threat_result,
+        "phishing_analysis": phishing_result
     }
