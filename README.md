@@ -39,8 +39,8 @@ It integrates multiple layers to detect and respond to:
 - Behavioral anomalies  
 - Brute-force login attempts  
 - Insider threats  
-- **Phishing email attacks (header + content + threat intelligence)**
-- **Malware Behavior Detection & Automated Response module**
+- **Phishing email attacks (header + content + threat intelligence)**  
+- **Malware Behavior Detection & Automated Response**  
 
 ---
 
@@ -49,35 +49,27 @@ It integrates multiple layers to detect and respond to:
 ### 🔹 Phishing Email Detection (Blocked)
 ![Phishing Blocked](ai_security_platform/screenshots/phishing-blocked-email.png)
 
----
-
 ### 🔹 VirusTotal Threat Intelligence
 ![Threat Intel](ai_security_platform/screenshots/virustotal-threat-intel.png)
 
----
-
 ### 🔹 Behavioral Threat Detection Output
 ![Threat Detection](ai_security_platform/screenshots/threat-detection.png)
-
----
 
 ### 🔹 Secure API Response (PII Masked)
 ![API Response](ai_security_platform/screenshots/api-response.png)
 
 ---
 
-## 🧠 Key Features
-
 ## 🔐 Multi-Layer Security Architecture
 
 This platform implements a defense-in-depth approach combining:
 
-- Prompt Injection Detection Layer
-- Phishing Email Analysis Engine
-- Behavioral Threat Scoring System
-- Malware Behavior Detection Module
-- Threat Intelligence Integration (VirusTotal)
-- PII Protection Layer
+- Prompt Injection Detection Layer  
+- Phishing Email Analysis Engine  
+- Behavioral Threat Scoring System  
+- Malware Behavior Detection Module  
+- Threat Intelligence Integration (VirusTotal)  
+- PII Protection Layer  
 
 Each layer operates independently and collectively to detect, analyze, and block threats in real time.
 
@@ -88,10 +80,51 @@ Each layer operates independently and collectively to detect, analyze, and block
 - Prompt Injection Detection & Blocking  
 - Phishing Email Detection & Automated Response  
 - Behavioral Threat Analysis (Anomaly Detection, Brute-force, Insider Risk)  
-- Malware Behavior Detection (Credential Dumping, Ransomware, C2 Activity)  
+- Malware Behavior Detection (Credential Dumping, Privilege Escalation, Ransomware, C2 Activity)  
 - PII Masking (Client + Backend Protection)  
 - API Rate Limiting & Abuse Prevention  
 - Threat Intelligence Integration (VirusTotal)
+
+---
+
+## 🧠 MITRE ATT&CK Mapping
+
+This system aligns with the **MITRE ATT&CK framework**, providing structured detection across key attack stages:
+
+### 🔓 Credential Access (TA0006)
+- **Technique:** OS Credential Dumping (T1003)  
+- Detects LSASS access, memory dumps, credential extraction tools  
+
+### ⬆️ Privilege Escalation (TA0004)
+- **Technique:** Abuse Elevation Control Mechanism (T1548)  
+- Detects `runas`, PowerShell elevation, token/privilege abuse  
+
+### ⚙️ Execution (TA0002)
+- **Technique:** Command and Scripting Interpreter (T1059)  
+- Detects encoded PowerShell commands and script-based execution  
+
+### 🧷 Persistence (TA0003)
+- **Technique:** Boot or Logon Autostart Execution (T1547)  
+- Detects registry run keys and startup persistence  
+
+### 🌐 Command & Control (TA0011)
+- **Technique:** Application Layer Protocol (T1071)  
+- Detects suspicious outbound connections to malicious IP ranges  
+
+### 🔐 Impact (TA0040)
+- **Technique:** Data Encrypted for Impact (T1486)  
+- Detects ransomware behavior and file encryption patterns  
+
+### 🎣 Initial Access (TA0001)
+- **Technique:** Phishing (T1566)  
+- Detects malicious emails using header, content, and threat intelligence analysis  
+
+### 🧠 Discovery / Credential Access
+- **Techniques:**  
+  - Brute Force (T1110)  
+  - Valid Accounts (T1078)  
+- Detects abnormal login patterns and insider threats  
+
 ---
 
 ## 📧 Phishing Email Detection & Response
@@ -99,19 +132,18 @@ Each layer operates independently and collectively to detect, analyze, and block
 ### 🧠 Header Analysis
 - SPF, DKIM, DMARC validation  
 - Sender spoofing detection  
-- Suspicious mail routing  
+- Suspicious routing  
 
 ### 📩 Content Analysis
-- Social engineering keyword detection  
-- Suspicious URL extraction  
+- Social engineering detection  
+- Malicious URL extraction  
 
 ### 🌍 Threat Intelligence
-- URLs enriched using **VirusTotal API**  
-- Detects malicious and suspicious domains  
+- URLs validated using **VirusTotal API**  
 
 ### 🚫 Automated Response
 - High-risk emails → **Blocked (HTTP 403)**  
-- Events logged for investigation  
+- Logged for SOC investigation  
 
 ---
 
@@ -131,12 +163,29 @@ Detects:
 - Failed login patterns  
 - IP anomalies  
 - After-hours access  
-- High-risk actions  
+- Insider threat activity  
 
 ### 🚨 Response
 - Account lockout  
 - IP blacklisting  
 - Request blocking  
+
+---
+
+## 💀 Malware Detection & Response Engine
+
+Detects and blocks:
+
+- Credential dumping (LSASS access)  
+- Privilege escalation attempts (runAs, PowerShell elevation)  
+- Suspicious PowerShell execution  
+- Ransomware behavior (file encryption patterns)  
+- Persistence mechanisms (registry modification)  
+- Command-and-control (C2) communication  
+
+### 🚫 Automated Response
+- High-risk behavior → **Blocked (HTTP 403)**  
+- Events logged for forensic analysis  
 
 ---
 
