@@ -39,7 +39,8 @@ It integrates multiple layers to detect and respond to:
 - Behavioral anomalies  
 - Brute-force login attempts  
 - Insider threats  
-- **Phishing email attacks (header + content + threat intelligence)**  
+- **Phishing email attacks (header + content + threat intelligence)**
+- **Malware Behavior Detection & Automated Response module**
 
 ---
 
@@ -73,7 +74,8 @@ It integrates multiple layers to detect and respond to:
 - Rate limiting enforcement  
 - Prompt injection detection  
 - PII sanitization (frontend + backend)  
-- Behavioral threat scoring  
+- Behavioral threat scoring
+- Malware Behavior Detection & Automated Response module
 - **Phishing detection (header + content)**  
 - **VirusTotal threat intelligence integration**  
 - Secure logging  
