@@ -1,0 +1,15 @@
+2026-05-02 08:26:17,836 - ALLOWED | user=analyst | ip=192.168.1.20 | endpoint=/malware/scan | score=0
+2026-05-02 08:27:25,543 - MALWARE BLOCKED | user=analyst | process=powershell.exe | score=155 | risk=critical
+2026-05-02 08:29:04,079 - ALLOWED | user=analyst | ip=192.168.1.40 | endpoint=/malware/scan | score=0
+2026-05-02 13:00:22,678 - MALWARE BLOCKED | user=analyst | process=procdump.exe | score=100 | risk=critical
+2026-05-02 15:40:20,187 - MALWARE BLOCKED | user=analyst | process=procdump.exe | score=100 | risk=critical
+2026-05-02 15:42:31,537 - MALWARE BLOCKED | user=analyst | process=unknown.exe | score=150 | risk=critical
+2026-05-02 15:43:58,404 - MALWARE BLOCKED | user=analyst | process=cmd.exe | score=70 | risk=high
+2026-05-02 16:55:31,388 - MALWARE BLOCKED | user=analyst | process=unknown.exe | score=150 | risk=critical
+2026-05-02 17:01:08,431 - MALWARE BLOCKED | user=analyst | process=cmd.exe | score=70 | risk=high
+2026-05-02 19:26:44,563 - ALLOWED | user=analyst | ip=192.168.1.20 | endpoint=/malware/scan | score=20
+2026-05-02 21:16:40,164 - MALWARE BLOCKED | user=analyst | process=powershell.exe | score=155 | risk=critical
+2026-05-02 22:43:07,926 - MALWARE BLOCKED | user=analyst | process=procdump.exe | score=100 | risk=critical
+2026-05-02 23:05:42,145 - MALWARE BLOCKED | user=analyst | process=unknown.exe | score=150 | risk=critical
+2026-05-02 23:25:40,370 - MALWARE BLOCKED | user=analyst | process=cmd.exe | score=70 | risk=high
+2026-05-03 00:24:14,297 - MALWARE BLOCKED | user=attacker | process=powershell.exe | score=90 | risk=high
