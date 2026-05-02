@@ -68,18 +68,30 @@ It integrates multiple layers to detect and respond to:
 
 ## 🧠 Key Features
 
-### 🔐 Multi-Layer Security Architecture
+## 🔐 Multi-Layer Security Architecture
 
-- Authentication validation  
-- Rate limiting enforcement  
-- Prompt injection detection  
-- PII sanitization (frontend + backend)  
-- Behavioral threat scoring
-- Malware Behavior Detection & Automated Response module
-- **Phishing detection (header + content)**  
-- **VirusTotal threat intelligence integration**  
-- Secure logging  
+This platform implements a defense-in-depth approach combining:
 
+- Prompt Injection Detection Layer
+- Phishing Email Analysis Engine
+- Behavioral Threat Scoring System
+- Malware Behavior Detection Module
+- Threat Intelligence Integration (VirusTotal)
+- PII Protection Layer
+
+Each layer operates independently and collectively to detect, analyze, and block threats in real time.
+
+---
+
+## 🛡️ Security Capabilities
+
+- Prompt Injection Detection & Blocking  
+- Phishing Email Detection & Automated Response  
+- Behavioral Threat Analysis (Anomaly Detection, Brute-force, Insider Risk)  
+- Malware Behavior Detection (Credential Dumping, Ransomware, C2 Activity)  
+- PII Masking (Client + Backend Protection)  
+- API Rate Limiting & Abuse Prevention  
+- Threat Intelligence Integration (VirusTotal)
 ---
 
 ## 📧 Phishing Email Detection & Response
