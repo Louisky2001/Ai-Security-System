@@ -13,3 +13,4 @@
 2026-05-02 23:05:42,145 - MALWARE BLOCKED | user=analyst | process=unknown.exe | score=150 | risk=critical
 2026-05-02 23:25:40,370 - MALWARE BLOCKED | user=analyst | process=cmd.exe | score=70 | risk=high
 2026-05-03 00:24:14,297 - MALWARE BLOCKED | user=attacker | process=powershell.exe | score=90 | risk=high
+2026-05-03 22:47:48,618 - MALWARE BLOCKED | user=analyst | process=unknown123.exe | score=100 | risk=critical
