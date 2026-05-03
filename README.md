@@ -44,6 +44,8 @@ It integrates multiple detection layers to:
 ---
 
 ## 🧠 System Architecture
+
+```
 User Request → FastAPI Endpoint
               ↓
      ┌────────────────────────────┐
@@ -60,13 +62,15 @@ User Request → FastAPI Endpoint
               ↓
         Decision Engine
      (Allow / Block / Log)
-
+```
 
 👉 Each layer operates independently and collectively to enforce **defense-in-depth security**
 
 ---
 
 ## 📁 Project Structure
+
+```
 AI-Security-Middleware/
 │
 ├── app/
@@ -86,9 +90,9 @@ AI-Security-Middleware/
 ├── requirements.txt
 ├── README.md
 ├── .gitignore
+```
 
-
-👉 The system is modularized to reflect **real-world SOC pipelines**, where each component independently analyzes threats and contributes to final security decisions.
+👉 The system is modularized to reflect real-world SOC pipelines and layered detection architecture.
 
 ---
 
