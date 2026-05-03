@@ -95,9 +95,9 @@ AI-Security-Middleware/
 👉 The system is modularized to reflect real-world SOC pipelines and layered detection architecture.
 
 ---
-
 ## 📸 Screenshots
 
+### 📧 Phishing Detection
 ### 🔹 Phishing Email Detection (Blocked)
 ![Phishing Blocked](ai_security_platform/screenshots/phishing-blocked-email.png)
 
@@ -109,6 +109,25 @@ AI-Security-Middleware/
 
 ### 🔹 Secure API Response (PII Masked)
 ![API Response](ai_security_platform/screenshots/api-response.png)
+---
+
+### 💀 Malware Detection in Action
+
+#### 🟢 Clean Process (Allowed)
+![Clean Process](ai_security_platform/screenshots/clean_process.png)
+
+#### 🔴 Credential Dumping (Blocked)
+![Credential Dumping](ai_security_platform/screenshots/crendential_dumping.png)
+
+#### ⚠️ Suspicious PowerShell (Blocked)
+![PowerShell](ai_security_platform/screenshots/suspicious_powershell.png)
+
+#### 🔥 Ransomware Activity (Blocked)
+![Ransomware](ai_security_platform/screenshots/ransomware.png)
+
+#### 🔐 Privilege Escalation (Blocked)
+![Privilege](ai_security_platform/screenshots/privilege_escalation.png)
+
 
 ---
 
