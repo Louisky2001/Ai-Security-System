@@ -125,9 +125,6 @@ AI-Security-Middleware/
 #### 🔥 Ransomware Activity (Blocked)
 ![Ransomware](ai_security_platform/screenshots/ransomware.png)
 
-#### 🔐 Privilege Escalation (Blocked)
-![Privilege](ai_security_platform/screenshots/privilege_escalation.png)
-
 
 ---
 
