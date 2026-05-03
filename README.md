@@ -45,21 +45,21 @@ It integrates multiple detection layers to:
 
 ## 🧠 System Architecture
 User Request → FastAPI Endpoint
-↓
-┌────────────────────────────┐
-│ Security Middleware Layer │
-├────────────────────────────┤
-│ ✔ Auth Verification │
-│ ✔ Rate Limiting │
-│ ✔ PII Masking │
-│ ✔ Prompt Injection Check │
-│ ✔ Behavioral Analysis │
-│ ✔ Phishing Detection │
-│ ✔ Malware Detection │
-└────────────────────────────┘
-↓
-Decision Engine
-(Allow / Block / Log)
+              ↓
+     ┌────────────────────────────┐
+     │ Security Middleware Layer  │
+     ├────────────────────────────┤
+     │ ✔ Auth Verification        │
+     │ ✔ Rate Limiting            │
+     │ ✔ PII Masking              │
+     │ ✔ Prompt Injection Check   │
+     │ ✔ Behavioral Analysis      │
+     │ ✔ Phishing Detection       │
+     │ ✔ Malware Detection        │
+     └────────────────────────────┘
+              ↓
+        Decision Engine
+     (Allow / Block / Log)
 
 
 👉 Each layer operates independently and collectively to enforce **defense-in-depth security**
@@ -70,22 +70,22 @@ Decision Engine
 AI-Security-Middleware/
 │
 ├── app/
-│ ├── main.py # FastAPI entry point
-│ ├── security/
-│ │ ├── auth.py # Authentication & token validation
-│ │ ├── injection.py # Prompt injection detection
-│ │ ├── pii.py # PII masking (email, phone, etc.)
-│ │ ├── rate_limit.py # Rate limiting & abuse prevention
-│ │ ├── behavioral_threat.py # Behavioral threat scoring engine
-│ │ ├── phishing_detector.py # Phishing analysis (headers + content)
-│ │ ├── malware_detector.py # Malware behavior detection engine
-│ │ └── logger.py # Security event logging
+│   ├── main.py
+│   ├── security/
+│   │   ├── auth.py
+│   │   ├── injection.py
+│   │   ├── pii.py
+│   │   ├── rate_limit.py
+│   │   ├── behavioral_threat.py
+│   │   ├── phishing_detector.py
+│   │   ├── malware_detector.py
+│   │   └── logger.py
 │
-├── screenshots/ # Project demo images
-├── tests/ # Test scenarios & validation
-├── requirements.txt # Dependencies
-├── README.md # Documentation
-├── .gitignore # Ignored files (logs, env, etc.)
+├── screenshots/
+├── tests/
+├── requirements.txt
+├── README.md
+├── .gitignore
 
 
 👉 The system is modularized to reflect **real-world SOC pipelines**, where each component independently analyzes threats and contributes to final security decisions.
