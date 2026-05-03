@@ -18,29 +18,77 @@ Cybersecurity Analyst | SOC | Detection Engineering | AI Security
 
 ## 🚀 Why This Project Matters
 
-Modern systems are vulnerable to:
-- Phishing attacks  
-- Prompt injection  
-- Data leakage  
-- Insider threats  
+Modern applications face evolving threats including:
 
-👉 This project demonstrates how to **detect and automatically respond to these threats using layered security controls and real-time decision logic.**
+- Phishing attacks  
+- Credential theft  
+- Insider threats  
+- Prompt injection (AI systems)  
+- Malware execution and persistence  
+
+👉 This project demonstrates how to **proactively detect, analyze, and automatically respond to these threats using layered security controls and real-time decision logic.**
 
 ---
 
 ## 📌 Overview
 
-This project implements a **defense-in-depth AI security system** designed to protect modern applications from evolving cyber threats.
+This project implements a **defense-in-depth AI security middleware** designed to protect APIs and modern applications.
 
-It integrates multiple layers to detect and respond to:
+It integrates multiple detection layers to:
 
-- Prompt injection attacks  
-- Sensitive data (PII) exposure  
-- Behavioral anomalies  
-- Brute-force login attempts  
-- Insider threats  
-- **Phishing email attacks (header + content + threat intelligence)**  
-- **Malware Behavior Detection & Automated Response**  
+- Identify malicious behavior  
+- Correlate threat signals  
+- Automatically block high-risk activity  
+- Provide SOC-style visibility into security events  
+
+---
+
+## 🧠 System Architecture
+User Request → FastAPI Endpoint
+↓
+┌────────────────────────────┐
+│ Security Middleware Layer │
+├────────────────────────────┤
+│ ✔ Auth Verification │
+│ ✔ Rate Limiting │
+│ ✔ PII Masking │
+│ ✔ Prompt Injection Check │
+│ ✔ Behavioral Analysis │
+│ ✔ Phishing Detection │
+│ ✔ Malware Detection │
+└────────────────────────────┘
+↓
+Decision Engine
+(Allow / Block / Log)
+
+
+👉 Each layer operates independently and collectively to enforce **defense-in-depth security**
+
+---
+
+## 📁 Project Structure
+AI-Security-Middleware/
+│
+├── app/
+│ ├── main.py # FastAPI entry point
+│ ├── security/
+│ │ ├── auth.py # Authentication & token validation
+│ │ ├── injection.py # Prompt injection detection
+│ │ ├── pii.py # PII masking (email, phone, etc.)
+│ │ ├── rate_limit.py # Rate limiting & abuse prevention
+│ │ ├── behavioral_threat.py # Behavioral threat scoring engine
+│ │ ├── phishing_detector.py # Phishing analysis (headers + content)
+│ │ ├── malware_detector.py # Malware behavior detection engine
+│ │ └── logger.py # Security event logging
+│
+├── screenshots/ # Project demo images
+├── tests/ # Test scenarios & validation
+├── requirements.txt # Dependencies
+├── README.md # Documentation
+├── .gitignore # Ignored files (logs, env, etc.)
+
+
+👉 The system is modularized to reflect **real-world SOC pipelines**, where each component independently analyzes threats and contributes to final security decisions.
 
 ---
 
@@ -62,16 +110,14 @@ It integrates multiple layers to detect and respond to:
 
 ## 🔐 Multi-Layer Security Architecture
 
-This platform implements a defense-in-depth approach combining:
+This platform combines:
 
 - Prompt Injection Detection Layer  
 - Phishing Email Analysis Engine  
 - Behavioral Threat Scoring System  
-- Malware Behavior Detection Module  
+- Malware Behavior Detection Engine  
 - Threat Intelligence Integration (VirusTotal)  
 - PII Protection Layer  
-
-Each layer operates independently and collectively to detect, analyze, and block threats in real time.
 
 ---
 
@@ -83,110 +129,115 @@ Each layer operates independently and collectively to detect, analyze, and block
 - Malware Behavior Detection (Credential Dumping, Privilege Escalation, Ransomware, C2 Activity)  
 - PII Masking (Client + Backend Protection)  
 - API Rate Limiting & Abuse Prevention  
-- Threat Intelligence Integration (VirusTotal)
+- Threat Intelligence Integration (VirusTotal)  
+
+---
+
+## 🎯 Security Impact (SOC Perspective)
+
+This system simulates real SOC capabilities:
+
+- Detects and blocks phishing attempts before credential compromise  
+- Identifies credential dumping (LSASS targeting)  
+- Detects abnormal login behavior and insider threats  
+- Prevents prompt injection in AI-driven workflows  
+- Blocks malware-like execution patterns in real time  
+
+👉 **Outcome:**
+- Reduced attack surface  
+- Faster threat detection  
+- Automated response to high-risk activity  
+- Shift from reactive monitoring → proactive defense  
+
+---
+
+## 🧪 Test Scenarios
+
+| Attack Type | Detection Method | Response |
+|------------|----------------|---------|
+| Phishing Email | Header + URL + Threat Intel | Blocked (403) |
+| Credential Dumping | LSASS access detection | Blocked |
+| Privilege Escalation | runAs / PowerShell patterns | Blocked |
+| Prompt Injection | Pattern detection | Blocked |
+| Rate Abuse | Request frequency analysis | 429 |
+| Insider Threat | Behavioral scoring | Blocked |
 
 ---
 
 ## 🧠 MITRE ATT&CK Mapping
 
-This system aligns with the **MITRE ATT&CK framework**, providing structured detection across key attack stages:
-
 ### 🔓 Credential Access (TA0006)
-- **Technique:** OS Credential Dumping (T1003)  
-- Detects LSASS access, memory dumps, credential extraction tools  
+- T1003 – OS Credential Dumping  
 
 ### ⬆️ Privilege Escalation (TA0004)
-- **Technique:** Abuse Elevation Control Mechanism (T1548)  
-- Detects `runas`, PowerShell elevation, token/privilege abuse  
+- T1548 – Abuse Elevation Control Mechanism  
 
 ### ⚙️ Execution (TA0002)
-- **Technique:** Command and Scripting Interpreter (T1059)  
-- Detects encoded PowerShell commands and script-based execution  
+- T1059 – Command and Scripting Interpreter  
 
 ### 🧷 Persistence (TA0003)
-- **Technique:** Boot or Logon Autostart Execution (T1547)  
-- Detects registry run keys and startup persistence  
+- T1547 – Autostart Execution  
 
 ### 🌐 Command & Control (TA0011)
-- **Technique:** Application Layer Protocol (T1071)  
-- Detects suspicious outbound connections to malicious IP ranges  
+- T1071 – Application Layer Protocol  
 
 ### 🔐 Impact (TA0040)
-- **Technique:** Data Encrypted for Impact (T1486)  
-- Detects ransomware behavior and file encryption patterns  
+- T1486 – Data Encrypted for Impact  
 
 ### 🎣 Initial Access (TA0001)
-- **Technique:** Phishing (T1566)  
-- Detects malicious emails using header, content, and threat intelligence analysis  
-
-### 🧠 Discovery / Credential Access
-- **Techniques:**  
-  - Brute Force (T1110)  
-  - Valid Accounts (T1078)  
-- Detects abnormal login patterns and insider threats  
-
----
-
-## 📧 Phishing Email Detection & Response
-
-### 🧠 Header Analysis
-- SPF, DKIM, DMARC validation  
-- Sender spoofing detection  
-- Suspicious routing  
-
-### 📩 Content Analysis
-- Social engineering detection  
-- Malicious URL extraction  
-
-### 🌍 Threat Intelligence
-- URLs validated using **VirusTotal API**  
-
-### 🚫 Automated Response
-- High-risk emails → **Blocked (HTTP 403)**  
-- Logged for SOC investigation  
-
----
-
-## 🧾 PII Protection
-
-| Layer | Description |
-|------|------------|
-| Frontend | Masks sensitive data |
-| Backend | Re-validates input |
-| Logging | Prevents exposure |
-
----
-
-## 🧠 Behavioral Threat Detection
-
-Detects:
-- Failed login patterns  
-- IP anomalies  
-- After-hours access  
-- Insider threat activity  
-
-### 🚨 Response
-- Account lockout  
-- IP blacklisting  
-- Request blocking  
+- T1566 – Phishing  
 
 ---
 
 ## 💀 Malware Detection & Response Engine
 
-Detects and blocks:
+Detects:
 
 - Credential dumping (LSASS access)  
-- Privilege escalation attempts (runAs, PowerShell elevation)  
+- Privilege escalation attempts  
 - Suspicious PowerShell execution  
-- Ransomware behavior (file encryption patterns)  
-- Persistence mechanisms (registry modification)  
-- Command-and-control (C2) communication  
+- Ransomware activity  
+- Persistence mechanisms  
+- Command-and-control communication  
 
-### 🚫 Automated Response
-- High-risk behavior → **Blocked (HTTP 403)**  
-- Events logged for forensic analysis  
+### 🚫 Response
+- High-risk behavior → Blocked (HTTP 403)  
+- Logged for forensic analysis  
 
 ---
 
 ## 🔄 System Workflow
+
+1. User sends request  
+2. Request passes through security layers  
+3. Each module evaluates risk  
+4. Threat score is calculated  
+5. Decision engine:
+   - Allow  
+   - Block  
+   - Log  
+
+---
+
+## 🚀 Future Enhancements
+
+- SIEM integration (Wazuh / ELK)  
+- Real-time alerting (Slack / Email)  
+- ML-based anomaly detection  
+- Threat correlation engine  
+
+---
+
+## 🔗 Links
+
+- 🌐 Portfolio: https://louisky.vercel.app  
+- 💻 GitHub: https://github.com/Louisky2001  
+
+---
+
+## 🧠 Final Note
+
+This project demonstrates **practical cybersecurity engineering** — not just theory.
+
+👉 Built to reflect how modern SOC teams detect, analyze, and respond to threats in real environments.
+
