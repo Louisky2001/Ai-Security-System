@@ -125,6 +125,14 @@ AI-Security-Middleware/
 #### 🔥 Ransomware Activity (Blocked)
 ![Ransomware](ai_security_platform/screenshots/ransomware.png)
 
+### 🧠 Unknown Threat (Anomaly Detection)
+![Anomaly Detection](ai_security_platform/screenshots/anomaly_detection.png)
+
+- Unknown process with abnormal behavior detected  
+- No known malware signature matched  
+- Detected via behavioral anomaly logic  
+- Response: **Blocked (High Risk)**  
+
 
 ---
 
